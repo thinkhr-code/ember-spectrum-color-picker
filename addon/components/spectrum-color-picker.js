@@ -58,15 +58,15 @@ export default Ember.Component.extend({
   localStorageKey: 'spectrum-color-picker',
 
   updatePalette: Ember.observer('palette', function () {
-    this.$().spectrum('option', 'palette', this.get('palette'));
+    $(this.element).spectrum('option', 'palette', this.get('palette'));
   }),
 
   updatePicker: Ember.observer('color', function () {
-    this.$().spectrum('set', this.get('color'));
+    $(this.element).spectrum('set', this.get('color'));
   }),
 
   updateDisabled: Ember.observer('disabled', function () {
-    this.$().spectrum(this.get('disabled') ? 'disable' : 'enable');
+    $(this.element).spectrum(this.get('disabled') ? 'disable' : 'enable');
   }),
 
   getOptions() {
@@ -149,7 +149,7 @@ export default Ember.Component.extend({
   },
 
   initSpectrum(opts) {
-    this.$().spectrum(opts);
+    $(this.element).spectrum(opts);
   },
 
   didInsertElement() {
@@ -159,6 +159,6 @@ export default Ember.Component.extend({
   },
 
   willDestroyElement() {
-    this.$().spectrum('destroy');
+    $(this.element).spectrum('destroy');
   }
 });
